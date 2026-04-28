@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "3DAnimTask.slnx"
+    "dotnet.defaultSolution": "3DAnimAssessmentTask.slnx"
 }
