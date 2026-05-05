@@ -1,13 +1,13 @@
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 
 public class PlayerController : MonoBehaviour
 {
     private InputAction moveAction;
     private InputAction sprintAction;
     private CinemachineCamera followPlayer;
-    private CinemachineCamera objectCamera;
     private Rigidbody rb;
     private float moveSpeed = 5f;
     private float turnSpeed = 150f;
@@ -32,9 +32,8 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        objectCamera = other.GetComponentInChildren<CinemachineCamera>();
-        objectCamera.enabled = true;
-        objectCamera.Prioritize();
+        PlayableDirector sequence = other.GetComponentInChildren<PlayableDirector>();
+        sequence.Play();
     }
 
     private void Move()
