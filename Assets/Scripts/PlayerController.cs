@@ -28,31 +28,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
-        if (objectCamera)
-        {
-            ViewCamera();
-        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         objectCamera = other.GetComponentInChildren<CinemachineCamera>();
-    }
-
-    void ViewCamera()
-    {
-        if (followPlayer.IsLive)
-        {
-            if (objectCamera)
-            {
-                objectCamera.enabled = true;
-                objectCamera.Prioritize();
-            }
-        }
-        // else
-        // {
-        //     followPlayer.Prioritize();
-        // }
+        objectCamera.enabled = true;
+        objectCamera.Prioritize();
     }
 
     private void Move()
