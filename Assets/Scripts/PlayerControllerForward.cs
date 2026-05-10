@@ -13,6 +13,9 @@ public class PlayerControllerForward : MonoBehaviour
     private float sprintBoost = 1.5f;
     private Animator anim;
     private SceneDirector sceneDirector;
+    [SerializeField] private GameObject lookAtTargetObject;
+    [SerializeField] private float lookAtWeight;
+    
 
     void Start()
     {
@@ -39,6 +42,14 @@ public class PlayerControllerForward : MonoBehaviour
         if (other.CompareTag("NextScene"))
         {
             sceneDirector.GoToNextSubScene();
+        }
+    }
+
+    void OnAnimatorIK(int layerIndex){
+        if (lookAtTargetObject)
+        {
+            anim.SetLookAtPosition(lookAtTargetObject.transform.position);
+            anim.SetLookAtWeight(lookAtWeight);
         }
     }
 
